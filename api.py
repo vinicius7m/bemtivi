@@ -69,6 +69,22 @@ def create_table():
     """)
 
     c.execute("""
+        CREATE TABLE IF NOT EXISTS user_likes(
+            user_id int not null,
+            tweet_id int not null,
+            primary_key(user_id, tweet_id)
+        )
+    """)
+
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS user_follows(
+            user_follows_id int not null,
+            user_followed_id int not null,
+            primary_key(user_follows_id, user_followed_id)
+        )
+    """)
+    
+    c.execute("""
         ALTER TABLE pet 
         ADD CONSTRAINT FOREIGN KEY(id_responsavel) REFERENCES responsavel(id) 
     """)
